@@ -1,0 +1,35 @@
+repositories:
+  autoware_auto_msgs:
+    type: git
+    url: https://github.com/tier4/autoware_auto_msgs.git
+    version: 624aae9feb142eb2a4e16069ed06bf4050ccc3ea
+
+  v2x/rsu/detection/mmdet3d_ros2:
+    type: git
+    url: https://github.com/TonyTnT/mmdet3d_ros2.git
+    version: main
+
+  v2x/rsu/detection/mmdetection3d:
+    type: git
+    url: https://github.com/open-mmlab/mmdetection3d.git
+    version: main
+
+  v2x/rsu/rsu_preprocessor:
+    type: git
+    url: https://github.com/sakunaka39/rsu_preprocessor.git
+    version: main
+
+  v2x/vehicle/fake_sensor_publisher:
+    type: git
+    url: https://github.com/sakunaka39/fake_sensor_publisher.git
+    version: main
+
+  v2x/vehicle/v2x_dashboard:
+    type: git
+    url: https://github.com/sakunaka39/v2x_dashboard.git
+    version: main
+
+  v2x/rsu/sensors/velodyne:
+    type: git
+    url: https://github.com/ros-drivers/velodyne.git
+    version: ros2

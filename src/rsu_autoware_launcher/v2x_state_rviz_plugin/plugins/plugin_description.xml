@@ -1,0 +1,9 @@
+<library path="v2x_state_rviz_plugin">
+
+  <class
+    type="v2x_rviz_plugins::TopicMonitorPanel"
+    base_class_type="rviz_common::Panel">
+    <description>Topic Monitor Panel</description>
+  </class>
+
+</library>

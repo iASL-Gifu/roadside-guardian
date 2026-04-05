@@ -1,0 +1,25 @@
+# config.yaml
+
+# 1. モード設定 (同じWi-Fiなら peer, 違うNWなら client)
+mode: peer 
+
+# 2. ブリッジ設定 (ここが重要！)
+plugins:
+  ros2dds:
+    domain: 40
+    allow:
+      publishers:
+        - "/v2x/common/.*"
+        - "/v2x/vehicle/.*"
+        - "/localization/kinematic_state"
+        - "/localization/acceleration"
+        - "/perception/traffic_light_recognition/traffic_signals"
+        - "/planning/mission_planning/goal"
+        - "/system/operation_mode/state"
+      subscribers:
+        - "/v2x/common/.*"
+        - "/v2x/rsu/.*"
+    # 念のため deny も書いておくと安全です（v2x以外は通さない）
+    # deny:
+    #   - "**"
+    ros_localhost_only: false
