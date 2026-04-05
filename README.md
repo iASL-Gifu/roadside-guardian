@@ -72,7 +72,7 @@ The workspace provides interactive start scripts to easily launch different conf
 
 ### 1. Environment Configuration (`setup-ros-env-rsu.sh`)
 
-Before launching any nodes, you must configure your ROS 2 domain to prevent crosstalk and appropriately isolate the RSU and Ego vehicle networks.
+Before launching any nodes, you must configure your ROS 2 domain to prevent crosstalk and appropriately isolate the RSU and Ego vehicle networks. **Note**: You must source this script in *every* new terminal you open before running the subsequent commands.
 
 ```bash
 source setup-ros-env-rsu.sh
@@ -80,7 +80,21 @@ source setup-ros-env-rsu.sh
 
 You will be prompted to select a mode (Vehicle, RSU, or Standalone). This correctly sets your `ROS_DOMAIN_ID` and `ROS_LOCALHOST_ONLY` environment variables.
 
-### 2. Launching Autoware (`launch_autoware.sh`)
+### 2. Execution Workflow
+
+For both the Vehicle (PIXKIT) and the RSU, you will need to open **three separate terminals** and run the following scripts in sequence (1 -> 2 -> 3).
+
+#### Terminal 1: Establish Zenoh V2X Bridge (`connect_zenoh.sh`)
+
+Use the `connect_zenoh.sh` script to establish the Zenoh-based bridge for cross-domain communication between the Vehicle and the RSU:
+
+```bash
+./connect_zenoh.sh
+```
+
+You will be prompted to select a mode to connect as either the Ego Vehicle or the RSU.
+
+#### Terminal 2: Launch Autoware (`launch_autoware.sh`)
 
 Use the `launch_autoware.sh` script to launch the core Autoware stack in different modes:
 
@@ -92,7 +106,7 @@ You will be prompted to select a mode:
 1. **PIXKIT Mode**: Launches Autoware for the ego vehicle (PIXKIT).
 2. **RSU Planning Mode**: Launches the Autoware planning stack on the RSU to calculate alternative trajectories based on cooperative data.
 
-### 3. Launching V2X Nodes (`launch_v2x.sh`)
+#### Terminal 3: Launch V2X Nodes (`launch_v2x.sh`)
 
 Use the `launch_v2x.sh` script to launch the V2X, sensing, and bridge nodes that connect the RSU and the vehicle:
 
@@ -104,7 +118,7 @@ You will be prompted to select a mode:
 1. **PIXKIT Mode**: Launches vehicle-side nodes, including the V2X bridge, sensor publisher selectors, spoofing trigger, latency monitor, and dashboard.
 2. **RSU Mode**: Launches RSU-side nodes. This includes executing helper scripts (`scripts/launch_vlp32.sh`, `scripts/launch_lidar_detection.sh` for multi-sensor detection), the RSU preprocessor (`rsu_preprocessor.launch.xml`), and the RSU-side V2X bridge.
 
-### 4. Monitoring
+### 3. Monitoring
 When running the Vehicle V2X mode, the `v2x_dashboard` will automatically launch to visualize the V2X communication latency, trajectory overrides, and sensor spoofing states in real-time.
 
 ## Important Notes
