@@ -43,7 +43,7 @@ This workspace relies on several external repositories managed via `vcs` (vcstoo
 
 1. Clone this repository (which acts as the workspace root):
 ```bash
-git clone https://github.com/sakunaka39/roadside-guardian.git
+git clone https://github.com/iASL-Gifu/roadside-guardian.git
 cd roadside-guardian
 ```
 
